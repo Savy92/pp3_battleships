@@ -110,7 +110,8 @@ def game_over(board):
 
 
 def play_game(board):
-
+    player_board = create_board(BOARD_SIZE)
+    computer_board = create_board(BOARD_SIZE)
 
 
 def main():
