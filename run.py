@@ -60,8 +60,17 @@ def computer_guess(board):
     comp_row = random.randint(0, size - 1)
     comp_col = random.randint(0, size - 1)
 
+def show_rules():
+    print("Hello just checking this works.")
+
+
+def play_game():
+
 
 def main():
+    """
+    Main menu which provides user with two options.
+    """
     print("WELCOME TO BATTLESHIPS!")
     print("1 START GAME")
     print("2. RULES")
