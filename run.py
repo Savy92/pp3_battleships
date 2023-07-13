@@ -60,20 +60,22 @@ def computer_guess(board):
     comp_row = random.randint(0, size - 1)
     comp_col = random.randint(0, size - 1)
 
+
 def show_rules():
     print("Hello just checking this works.")
 
 
 def play_game():
+    print("Hello, this is were the code for the game will be stored.")
 
 
 def main():
     """
     Main menu which provides user with two options.
     """
-    print("WELCOME TO BATTLESHIPS!")
-    print("1 START GAME")
-    print("2. RULES")
+    print("WELCOME TO BATTLESHIPS!\n")
+    print(".   1 START GAME\n")
+    print(".   2. RULES\n")
 
     option = input("Enter your choice (1/2): ")
 
