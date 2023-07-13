@@ -52,11 +52,28 @@ def validate_guess(guess_row, guess_col, board):
         return False
 
 
-def computer_guess():
+def computer_guess(board):
     """
     Generates a random numbers between 0-4 for the computer.
     """
     size = len(board)
     comp_row = random.randint(0, size - 1)
     comp_col = random.randint(0, size - 1)
-    
+
+
+def main():
+    print("WELCOME TO BATTLESHIPS!")
+    print("1 START GAME")
+    print("2. RULES")
+
+    option = input("Enter your choice (1/2): ")
+
+    if option == "1":
+        play_game()
+    elif option == "2":
+        show_rules()
+    else:
+        print("Invalid option, please choose from 1 to start the game, or 2 to see the rules.")
+
+
+main()
