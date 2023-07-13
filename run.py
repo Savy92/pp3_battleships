@@ -1,6 +1,6 @@
 import random
 
-#Constants
+# Constants
 BOARD_SIZE = 5
 NUM_SHIPS = 5
 
@@ -22,7 +22,7 @@ def print_board(board):
         print(" ".join(row))
 
 
-def populate_board(board):
+def populate_battleships(board):
     """
     Random placement of ships allocated to board.
     """
@@ -44,7 +44,7 @@ def validate_guess(board):
         try:
             guess_row = int(input("Enter the row coordinate (0-4): "))
             guess_col = int(input("Enter the col coordinate (0-4): "))
-            if 0 <= x and x < BOARD_SIZE and 0 <= y and y < BOARD_SIZE:
+            if 0 <= guess_row < BOARD_SIZE and 0 <= guess_col < BOARD_SIZE:
                 if board[guess_row][guess_col] == "S":
                     print("Congratulations! You successfully hit a ship.")
                     board[guess_row][guess_col] = "X"
@@ -99,6 +99,7 @@ def show_rules():
         print("Invalid option, please enter 'M'..")
         show_rules()
 
+
 def game_over(board):
     """
     Checks to see if it's game over, if no "S" remain in the rows.
@@ -109,9 +110,39 @@ def game_over(board):
     return True
 
 
-def play_game(board):
+def play_game():
+    """
+    Runs the battleship game. 
+    """
+    # Creates boards for player & computer
     player_board = create_board(BOARD_SIZE)
     computer_board = create_board(BOARD_SIZE)
+
+    # Populates both boards
+    populate_battleships(player_board)
+    populate_battleships(computer_board)
+
+    while True:
+        print("Your board:")
+        print_board(player_board)
+        validate_guess(player_board)
+        if game_over(player_board):
+            print("Congratulations! You won!")
+            break
+
+        print("Computers board:")
+        print_board(computer_board)
+        if game_over(computer_board):
+            print("Sorry, you lost. The computer won.")
+            break
+
+        computer_guess(computer_board)
+        if game_over(computer_board):
+            print("Sorry, you lost. The computer won.")
+            break
+
+        print("Computers board:")
+        print_board(computer_board)
 
 
 def main():
@@ -119,7 +150,7 @@ def main():
     Main menu which provides user with two options.
     """
     user_name = input("Please enter a username: ")
-    while(True):
+    while True:
         print()
         print(f"\nWELCOME TO BATTLESHIPS!..{user_name} \n")
         print("    1 START GAME\n")
@@ -128,13 +159,12 @@ def main():
         option = input("Enter your choice (1/2): ")
 
         if option == "1":
-            game_board = create_board(BOARD_SIZE)
-            populate_board(game_board, NUM_SHIPS)
-            play_game(game_board)
+            play_game()
         elif option == "2":
             show_rules()
         else:
             print("\nInvalid option, please choose from 1 to start the game, or 2 to see the rules.")
         
 
-main()
+if __name__ == "__main__":
+    main()
