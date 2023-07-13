@@ -99,8 +99,18 @@ def show_rules():
         print("Invalid option, please enter 'M'..")
         show_rules()
 
+def game_over(board):
+    """
+    Checks to see if it's game over, if no "S" remain in the rows.
+    """
+    for row in board:
+        if "S" in row:
+            return False
+    return True
+
 
 def play_game(board):
+
 
 
 def main():
