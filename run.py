@@ -1,62 +1,62 @@
-from random import randint
+import random
 
 #Constants
 BOARD_SIZE = 5
+NUM_SHIPS = 5
 
-#Create board
-board = []
-for i in range(BOARD_SIZE):
-    board.append(["O"]* BOARD_SIZE)
+def create_board(size):
+    """
+    Creates the board game.
+    """
+    board = []
+    for i in range(size):
+        board.append(["O"]* size)
+    return board
 
 
 def print_board(board):
     """
-    Generates the starting board.
+    Generates the game board.
     """
     for row in board:
         print(" ".join(row))
 
 
-def populate_board(board):
+def populate_board(board, num_ships):
     """
     Random placement of ships allocated to board.
     """
-    ships = 5
-    while ships > 0:
-        ship_row = randint(0, len(board)-1)
-        ship_col = randint(0, len(board)-1)
+    size = len(board)
+    ships = 0
+    while ships < num_ships:
+        ship_row = random.randint(0, size - 1)
+        ship_col = random.randint(0, size - 1)
         if board[ship_row][ship_col] != "S":
             board[ship_row][ship_col] = "S"
-            ships -= 1
-    return board
-
-board_with_ships = populate_board(board)
-for row in board_with_ships:
-    print(" ".join(row))
+            ships += 1
 
 
-def make_guess():
+def validate_guess(guess_row, guess_col, board):
     """
-    Provides the player with the option to take a guess.
+    Checks to see if a guess hits or misses.
     """
-    while True:
-        try:
-            row = int(input("Enter a row number (0-4): "))
-            col = int(input("Enter a column number (0-4): "))
-            if row < 0 or row > 4 or col < 0 or col > 4:
-                raise ValueError
-            return (row, col)
-        except ValueError:
-            print("Invalid input, PLease enter a number between 0 and 4.")
+    if board[guess_row][guess_col] == "S":
+        print("Congratulations! You successfully hit a ship.")
+        board[guess_row][guess_col] = "X"
+        return True
+    elif board[guess_row][guess_col] == "X":
+        print("You already guessed that one!")
+        return False
+    else:
+        board[guess_row][guess_col] = "_"
+        return False
 
 
 def computer_guess():
     """
     Generates a random numbers between 0-4 for the computer.
     """
-    row = random.randint(0, 4)
-    col = random.randint(0, 4)
-    return (row, col)
-
-
-
+    size = len(board)
+    comp_row = random.randint(0, size - 1)
+    comp_col = random.randint(0, size - 1)
+    
