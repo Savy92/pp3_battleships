@@ -1,4 +1,5 @@
 import random
+import os
 
 # Constants
 BOARD_SIZE = 5
@@ -39,7 +40,7 @@ def validate_guess(board):
     """
     Checks players guess to check to see if it's a hit or miss.
     """
-    print("Your turn")
+    print("\nYour turn")
     while True:
         try:
             guess_row = int(input("Enter the row coordinate (0-4): "))
@@ -94,6 +95,7 @@ def show_rules():
     back_main_screen = input("Enter here: ")
 
     if back_main_screen == "M":
+        clear_screen()
         main()
     else:
         print("Invalid option, please enter 'M'..")
@@ -109,6 +111,9 @@ def game_over(board):
             return False
     return True
 
+def clear_screen():
+    os.system("clear")
+
 
 def play_game():
     """
@@ -123,8 +128,11 @@ def play_game():
     populate_battleships(computer_board)
 
     while True:
-        print("Your board:")
+        print("Your board:\n")
         print_board(player_board)
+        print("----------------")
+        print("Computer board\n")
+        print_board(computer_board)
         validate_guess(player_board)
         if game_over(player_board):
             print("Congratulations! You won!")
@@ -156,7 +164,7 @@ def main():
         print("    1 START GAME\n")
         print("    2. RULES\n")
 
-        option = input("Enter your choice (1/2): ")
+        option = input("Enter your choice (1/2): \n")
 
         if option == "1":
             play_game()
