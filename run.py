@@ -4,13 +4,13 @@ import random
 BOARD_SIZE = 5
 NUM_SHIPS = 5
 
-def create_board(size):
+def create_board(BOARD_SIZE):
     """
     Creates the board game.
     """
     board = []
-    for i in range(size):
-        board.append(["O"]* size)
+    for i in range(BOARD_SIZE):
+        board.append(["O"] * BOARD_SIZE)
     return board
 
 
@@ -22,43 +22,60 @@ def print_board(board):
         print(" ".join(row))
 
 
-def populate_board(board, num_ships):
+def populate_board(board):
     """
     Random placement of ships allocated to board.
     """
-    size = len(board)
     ships = 0
-    while ships < num_ships:
-        ship_row = random.randint(0, size - 1)
-        ship_col = random.randint(0, size - 1)
-        if board[ship_row][ship_col] != "S":
+    while ships < NUM_SHIPS:
+        ship_row = random.randint(0, BOARD_SIZE - 1)
+        ship_col = random.randint(0, BOARD_SIZE - 1)
+        if board[ship_row][ship_col] == "O":
             board[ship_row][ship_col] = "S"
             ships += 1
 
 
-def validate_guess(guess_row, guess_col, board):
+def validate_guess(board):
     """
-    Checks to see if a guess hits or misses.
+    Checks players guess to check to see if it's a hit or miss.
     """
-    if board[guess_row][guess_col] == "S":
-        print("Congratulations! You successfully hit a ship.")
-        board[guess_row][guess_col] = "X"
-        return True
-    elif board[guess_row][guess_col] == "X":
-        print("You already guessed that one!")
-        return False
-    else:
-        board[guess_row][guess_col] = "_"
-        return False
+    print("Your turn")
+    while True:
+        try:
+            guess_row = int(input("Enter the row coordinate (0-4): "))
+            guess_col = int(input("Enter the col coordinate (0-4): "))
+            if 0 <= x and x < BOARD_SIZE and 0 <= y and y < BOARD_SIZE:
+                if board[guess_row][guess_col] == "S":
+                    print("Congratulations! You successfully hit a ship.")
+                    board[guess_row][guess_col] = "X"
+                elif board[guess_row][guess_col] == "O":
+                    print("You missed!")
+                    board[guess_row][guess_col] = "_"
+                else:
+                    print("You already guessed this location.")
+                    break
+            else:
+                print("Invalid choice, please try again..")
+        except ValueError:
+            print("Invalid input, Try again.")
 
 
 def computer_guess(board):
     """
-    Generates a random numbers between 0-4 for the computer.
+    Generates computer's guess.
     """
-    size = len(board)
-    comp_row = random.randint(0, size - 1)
-    comp_col = random.randint(0, size - 1)
+    print("Computers turn")
+    while True:
+        comp_row = random.randint(0, BOARD_SIZE - 1)
+        comp_col = random.randint(0, BOARD_SIZE - 1)
+        if board[comp_row][comp_col] == "S":
+            print("The enemy has destroyed one of your ships!")
+            board[comp_row][comp_col] = "X"
+            break
+        elif board[comp_row][comp_col] == "O":
+            print("The enemy has missed.")
+            board[comp_row][comp_col] = "_"
+            break
 
 
 def show_rules():
@@ -80,28 +97,33 @@ def show_rules():
         main()
     else:
         print("Invalid option, please enter 'M'..")
+        show_rules()
 
 
-def play_game():
-    print("Hello, this is were the code for the game will be stored.")
+def play_game(board):
 
 
 def main():
     """
     Main menu which provides user with two options.
     """
-    print("\nWELCOME TO BATTLESHIPS!\n")
-    print("    1 START GAME\n")
-    print("    2. RULES\n")
+    user_name = input("Please enter a username: ")
+    while(True):
+        print()
+        print(f"\nWELCOME TO BATTLESHIPS!..{user_name} \n")
+        print("    1 START GAME\n")
+        print("    2. RULES\n")
 
-    option = input("Enter your choice (1/2): ")
+        option = input("Enter your choice (1/2): ")
 
-    if option == "1":
-        play_game()
-    elif option == "2":
-        show_rules()
-    else:
-        print("Invalid option, please choose from 1 to start the game, or 2 to see the rules.")
-
+        if option == "1":
+            game_board = create_board(BOARD_SIZE)
+            populate_board(game_board, NUM_SHIPS)
+            play_game(game_board)
+        elif option == "2":
+            show_rules()
+        else:
+            print("\nInvalid option, please choose from 1 to start the game, or 2 to see the rules.")
+        
 
 main()
