@@ -62,7 +62,24 @@ def computer_guess(board):
 
 
 def show_rules():
-    print("Hello just checking this works.")
+    """
+    Explains the rules of the game to user & allows them to go back to main menu.
+    """
+    print("\nRULES:\n")
+    print("- YOU VS THE COMPUTER.")
+    print("- THE OBJECTIVE IS TO SINK ALL OF THE COMPUTER'S BATTLESHIPS.")
+    print("- YOU & THE COMPUTER WILL TAKE TURNS IN GUESSING THE POSITION OF THE SHIPS.")
+    print("- TOP LEFT CORNER IS ROW: 0, COL: 0")
+    print("- 'S' = SHIPS, 'X' = HIT, '_' = MISS")
+    print("- FIRST TO SINK ALL OF THE OPPONENTS SHIPS WIN!")
+    
+    print("\nENTER 'M' TO RETURN TO MAIN MENU..\n")
+    back_main_screen = input("Enter here: ")
+
+    if back_main_screen == "M":
+        main()
+    else:
+        print("Invalid option, please enter 'M'..")
 
 
 def play_game():
@@ -73,9 +90,9 @@ def main():
     """
     Main menu which provides user with two options.
     """
-    print("WELCOME TO BATTLESHIPS!\n")
-    print(".   1 START GAME\n")
-    print(".   2. RULES\n")
+    print("\nWELCOME TO BATTLESHIPS!\n")
+    print("    1 START GAME\n")
+    print("    2. RULES\n")
 
     option = input("Enter your choice (1/2): ")
 
