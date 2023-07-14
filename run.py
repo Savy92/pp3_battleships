@@ -67,7 +67,7 @@ def validate_guess(board):
 
 def computer_guess(board):
     """
-    Generates computer's guess.
+    Randomly generates computer guess and checks the guess.
     """
     print("Computers turn")
     while True:
@@ -116,6 +116,9 @@ def game_over(board):
     return True
 
 def clear_screen():
+    """
+    Used to clear the terminal screen.
+    """
     os.system("clear")
 
 
