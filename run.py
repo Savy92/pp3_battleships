@@ -15,11 +15,13 @@ def create_board(BOARD_SIZE):
     return board
 
 
-def print_board(board):
+def print_board(board, hide_ships=True):
     """
     Generates the game board.
     """
     for row in board:
+        if hide_ships:
+            row = ["O" if cell == "S" else cell for cell in row]
         print(" ".join(row))
 
 
@@ -49,9 +51,11 @@ def validate_guess(board):
                 if board[guess_row][guess_col] == "S":
                     print("Congratulations! You successfully hit a ship.")
                     board[guess_row][guess_col] = "X"
+                    break
                 elif board[guess_row][guess_col] == "O":
                     print("You missed!")
                     board[guess_row][guess_col] = "_"
+                    break
                 else:
                     print("You already guessed this location.")
                     break
@@ -128,28 +132,26 @@ def play_game():
     populate_battleships(computer_board)
 
     while True:
+        clear_screen()
+        print("Your board:\n")
+        print_board(player_board, hide_ships=False)
+        print("----------------")
+        print("Computer board\n")
+        print_board(computer_board, hide_ships=True)
+
+        validate_guess(computer_board)
+        if game_over(computer_board):
+            print("Congratulations! You won!")
+            break
+        elif computer_guess(player_board):
+            if game_over(player_board):
+                print("Sorry, you lost. The computer won.")
+                break
+
         print("Your board:\n")
         print_board(player_board)
         print("----------------")
         print("Computer board\n")
-        print_board(computer_board)
-        validate_guess(player_board)
-        if game_over(player_board):
-            print("Congratulations! You won!")
-            break
-
-        print("Computers board:")
-        print_board(computer_board)
-        if game_over(computer_board):
-            print("Sorry, you lost. The computer won.")
-            break
-
-        computer_guess(computer_board)
-        if game_over(computer_board):
-            print("Sorry, you lost. The computer won.")
-            break
-
-        print("Computers board:")
         print_board(computer_board)
 
 
@@ -157,6 +159,7 @@ def main():
     """
     Main menu which provides user with two options.
     """
+    clear_screen()
     user_name = input("Please enter a username: ")
     while True:
         print()
