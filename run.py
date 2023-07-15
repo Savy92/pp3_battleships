@@ -139,7 +139,7 @@ def play_game():
         print("Your board:\n")
         print_board(player_board, hide_ships=False)
         print("----------------")
-        print("Computer board\n")
+        print("Computer board:\n")
         print_board(computer_board, hide_ships=True)
 
         validate_guess(computer_board)
@@ -154,7 +154,7 @@ def play_game():
         print("Your board:\n")
         print_board(player_board)
         print("----------------")
-        print("Computer board\n")
+        print("Computer board:\n")
         print_board(computer_board)
 
 
