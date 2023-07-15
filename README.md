@@ -1,4 +1,7 @@
 # BATTLESHIPS
+
+<hr>
+
 ## Introduction
 
 Welcome to my take on the traditional battleships game, which runs in the Code Institute mock terminal on Heroku.
@@ -8,6 +11,8 @@ The user can play against the computer and the first to destroy all of their opp
 *LIVE VERSION INSERT HERE*
 
 *SCREENSHOT OF THE GAME ON ALL DEVICES*
+
+<hr>
 
 ## How to play
 
@@ -23,11 +28,15 @@ The player and computer takes turn in making a guess to try and sink their oppon
 
 The first to sink all of their opponents ships, wins the game.
 
+<hr>
+
 ## Planning
 
 I used Lucidchart.com to create my flowchart for my Battleships logic path.
 
 ENTER FLOWCHART SCREENSHOT
+
+<hr>
 
 ## Features
 
@@ -72,9 +81,7 @@ ENTER SCREENSHOT OF INPUTS
 
 - Allows the user to add ships to their own board.
 
-## Data Model
-
-??
+<hr>
 
 ## Technologies Used
 
@@ -82,6 +89,8 @@ ENTER SCREENSHOT OF INPUTS
 - Github
 - Heroku
 - LucidCharts
+
+<hr>
 
 ## Testing
 
@@ -91,12 +100,13 @@ I have manually tested this project by doing the following:
 - Tested in my local code terminal and the Code Institute Heroku terminal.
 - Input invalid strings and numbers to check if the appropriate message is displayed.
 
+<hr>
+
 ### Bugs fixed
 
-- Within the play_game function i was have issues with getting the computers turn to run straight after the players turn. I had to amend the If statement within the function to include an elif to run the computers go after the players go.
+- https://github.com/Savy92/pp3_battleships/issues/1#issue-1806310179
 
-- Within the play_game function, the players turn was updating the players board instead of the computer board. I have since corrected this by amending the code to validate_guess(computer_board).
-
+- https://github.com/Savy92/pp3_battleships/issues/2#issue-1806310777
 
 ### Bugs remaining
 
@@ -105,6 +115,8 @@ I have manually tested this project by doing the following:
 ### Validator testing
 
 - No errors were returned from PEP8online.com
+
+<hr>
 
 ## Deployment
 
@@ -117,6 +129,8 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 1. Set the buildbacks to Python & NodeJS in that order.
 1. Link the Heroku app to the repository.
 1. Click on deploy.
+
+<hr>
 
 ## Credits
 
