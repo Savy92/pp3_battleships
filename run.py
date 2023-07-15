@@ -5,6 +5,7 @@ import os
 BOARD_SIZE = 5
 NUM_SHIPS = 5
 
+
 def create_board(BOARD_SIZE):
     """
     Creates the board game.
@@ -85,16 +86,17 @@ def computer_guess(board):
 
 def show_rules():
     """
-    Explains the rules of the game to user & allows them to go back to main menu.
+    Explains the rules of the game to user &
+    allows them to go back to main menu.
     """
     print("\nRULES:\n")
     print("- YOU VS THE COMPUTER.")
     print("- THE OBJECTIVE IS TO SINK ALL OF THE COMPUTER'S BATTLESHIPS.")
-    print("- YOU & THE COMPUTER WILL TAKE TURNS IN GUESSING THE POSITION OF THE SHIPS.")
+    print("- YOU & THE COMPUTER WILL TAKE TURNS.")
     print("- TOP LEFT CORNER IS ROW: 0, COL: 0")
     print("- 'S' = SHIPS, 'X' = HIT, '_' = MISS")
     print("- FIRST TO SINK ALL OF THE OPPONENTS SHIPS WIN!")
-    
+
     print("\nENTER 'M' TO RETURN TO MAIN MENU..\n")
     back_main_screen = input("Enter here: ")
 
@@ -115,6 +117,7 @@ def game_over(board):
             return False
     return True
 
+
 def clear_screen():
     """
     Used to clear the terminal screen.
@@ -124,7 +127,7 @@ def clear_screen():
 
 def play_game():
     """
-    Runs the battleship game. 
+    Runs the battleship game.
     """
     # Creates boards for player & computer
     player_board = create_board(BOARD_SIZE)
@@ -175,10 +178,11 @@ def main():
         if option == "1":
             play_game()
         elif option == "2":
+            clear_screen()
             show_rules()
         else:
             print("\nInvalid option, please choose from 1 to start the game, or 2 to see the rules.")
-        
+
 
 if __name__ == "__main__":
     main()
