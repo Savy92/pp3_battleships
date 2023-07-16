@@ -46,20 +46,20 @@ def validate_guess(board):
     print("\nYour turn")
     while True:
         try:
-            guess_row = int(input("Enter the row coordinate (0-4): "))
-            guess_col = int(input("Enter the col coordinate (0-4): "))
+            guess_row = int(input("Enter the row coordinate (0-4): \n"))
+            guess_col = int(input("Enter the col coordinate (0-4): \n"))
             if 0 <= guess_row < BOARD_SIZE and 0 <= guess_col < BOARD_SIZE:
                 if board[guess_row][guess_col] == "S":
                     print("Congratulations! You successfully hit a ship.")
                     board[guess_row][guess_col] = "X"
                     break
-                elif board[guess_row][guess_col] == "O":
+                if board[guess_row][guess_col] == "O":
                     print("You missed!")
                     board[guess_row][guess_col] = "_"
                     break
                 else:
                     print("You already guessed this location.")
-                    break
+                    continue
             else:
                 print("Invalid choice, please try again..")
         except ValueError:
@@ -78,7 +78,7 @@ def computer_guess(board):
             print("The enemy has destroyed one of your ships!")
             board[comp_row][comp_col] = "X"
             break
-        elif board[comp_row][comp_col] == "O":
+        if board[comp_row][comp_col] == "O":
             print("The enemy has missed.")
             board[comp_row][comp_col] = "_"
             break
@@ -149,7 +149,7 @@ def play_game():
         if game_over(computer_board):
             print("Congratulations! You won!")
             break
-        elif computer_guess(player_board):
+        if computer_guess(player_board):
             if game_over(player_board):
                 print("Sorry, you lost. The computer won.")
                 break
@@ -166,7 +166,7 @@ def main():
     Main menu which provides user with two options.
     """
     clear_screen()
-    user_name = input("Please enter a username: ")
+    user_name = input("Please enter a username: \n")
     while True:
         print()
         print(f"\nWELCOME TO BATTLESHIPS!..{user_name} \n")
@@ -181,7 +181,8 @@ def main():
             clear_screen()
             show_rules()
         else:
-            print("\nInvalid option, please choose from 1 to start the game, or 2 to see the rules.")
+            print("\nInvalid option \
+                please choose from 1 to start the game or 2 to see the rules.")
 
 
 if __name__ == "__main__":
