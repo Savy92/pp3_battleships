@@ -8,9 +8,9 @@ Welcome to my take on the traditional battleships game, which runs in the Code I
 
 The user can play against the computer and the first to destroy all of their opponents battleships wins the game.
 
-*LIVE VERSION INSERT HERE*
+https://projectp3-battleships-a9dbd7a9cae9.herokuapp.com/
 
-*SCREENSHOT OF THE GAME ON ALL DEVICES*
+![Am i responsive screenshoot](./docs/images/responsive.png)
 
 <hr>
 
@@ -34,7 +34,7 @@ The first to sink all of their opponents ships, wins the game.
 
 I used Lucidchart.com to create my flowchart for my Battleships logic path.
 
-ENTER FLOWCHART SCREENSHOT
+![Logic path flowchart](./docs/images/flowchart.png)
 
 <hr>
 
@@ -44,20 +44,20 @@ ENTER FLOWCHART SCREENSHOT
 
 - Username must be entered.
 
-ENTER SCREENSHOT
+![Username input](./docs/images/input-username.png)
 
 - Main Menu:
 
-ENTER SCREENSHOT
+![Main menu](./docs/images/main-menu.png)
 
 1. Option 1 starts the game.
 1. Option 2 shows the player the rules.
 
-ENTER SCREENSHOT OF THE RULES
+![Rules](./docs/images/rules.png)
 
 - Random boards generated for player & computer.
 
-ENTER SCREENSHOT OF BOARDS
+![Boards](./docs/images/boards.png)
 
 - Computers ships are hidden from the user.
 
@@ -71,7 +71,9 @@ ENTER SCREENSHOT OF BOARDS
 1. The input must be numbers.
 1. You cannot enter coordinates outside the grid set.
 
-ENTER SCREENSHOT OF INPUTS
+![Already Guessed](./docs/images/already-guessed.png)
+
+![Outside grid](./docs/images/outside-grid.png)
 
 ### Future features
 
@@ -115,6 +117,8 @@ I have manually tested this project by doing the following:
 ### Validator testing
 
 - No errors were returned from PEP8online.com
+
+![Validate code](./docs/images/validate-code.png)
 
 <hr>
 
